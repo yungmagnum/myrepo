@@ -38,6 +38,7 @@ abline(model, col="red")
 #evaluation
 summary(model)
 
+
 #linear model without outliers
 #only delayed flights and flights with given passenger number
 df_regression <- subset(df_new, Airline == "FlyUIBK")

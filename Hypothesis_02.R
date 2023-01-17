@@ -17,13 +17,14 @@ df_new <- subset(df, Delay.indicator == 1)
 hist(df_new$Arrival.delay.in.minutes)
 
 #compute means
-describe(df2$Arrival.delay.in.minutes.FlyUIBK)
-describe(df2$Arrival.delay.in.minutes.LDA)
+describe(df_new$Arrival.delay.in.minutes.FlyUIBK)
+describe(df_new$Arrival.delay.in.minutes.LDA)
 
 #mann whitney test
 wilcox.test(Arrival.delay.in.minutes~Airline, data = df_new, exact = FALSE, conf.int = TRUE)
 
 #boxplot
 boxplot(df2$Arrival.delay.in.minutes.FlyUIBK, df2_new$Arrival.delay.in.minutes.LDA, names=c("FlyUIBK", "LDA"))
+
 
 
