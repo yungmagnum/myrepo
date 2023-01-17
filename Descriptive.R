@@ -23,3 +23,5 @@ describe(df3.2$Arrival.delay.in.minutes)
 
 df3.2 <- subset(df, Origin.airport =="OSL" & Delay.indicator =="1" & Airline =="LDA")
 describe(df3.2$Arrival.delay.in.minutes)
+
+
