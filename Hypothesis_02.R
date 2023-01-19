@@ -1,30 +1,24 @@
 library(readxl)
 library(psych)
-prepared_data2_delayed <- read_excel("Data/prepared_data2_delayed.xlsx", 
-                                     col_types = c("text", "text", "text", 
-                                                   "date", "date", "date", "date", "numeric", 
-                                                   "numeric", "numeric", "numeric", 
-                                                   "numeric", "text", "text", "text", 
-                                                   "date", "date", "date", "date", "numeric", 
-                                                   "numeric", "numeric", "numeric", 
-                                                   "numeric"))
-df = data.frame(StudentData_FlyUIBK_22_23)
-df2 = data.frame(prepared_data2_delayed)
+StudentData_FlyUIBK_22_23 <- read_excel("Data/StudentData_FlyUIBK_22_23 Adjusted.xlsx")
 
-df_new <- subset(df, Delay.indicator == 1)
+df = data.frame(StudentData_FlyUIBK_22_23)
+df1 <- subset(df, Adjusted.Delay.Indicator == 1 & Airline == "FlyUIBK")
+df2 <- subset(df, Adjusted.Delay.Indicator == 1 & Airline == "LDA")
+df3 <- subset(df, Adjusted.Delay.Indicator == 1)
 
 #test for normal distribution
-hist(df_new$Arrival.delay.in.minutes)
+hist(df3$Adjusted.Arrival.delay.in.minutes)
 
 #compute means
-describe(df_new$Arrival.delay.in.minutes.FlyUIBK)
-describe(df_new$Arrival.delay.in.minutes.LDA)
+describe(df1$Adjusted.Arrival.delay.in.minutes)
+describe(df2$Adjusted.Arrival.delay.in.minutes)
 
 #mann whitney test
-wilcox.test(Arrival.delay.in.minutes~Airline, data = df_new, exact = FALSE, conf.int = TRUE)
+wilcox.test(Adjusted.Arrival.delay.in.minutes~Airline, data = df3, exact = FALSE, conf.int = TRUE)
 
 #boxplot
-boxplot(df2$Arrival.delay.in.minutes.FlyUIBK, df2_new$Arrival.delay.in.minutes.LDA, names=c("FlyUIBK", "LDA"))
+boxplot(df1$Adjusted.Arrival.delay.in.minutes, df2$Adjusted.Arrival.delay.in.minutes, names=c("FlyUIBK", "LDA"))
 
 
 

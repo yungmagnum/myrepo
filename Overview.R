@@ -3,10 +3,8 @@ library(ggplot2)
 library(ggrepel)
 library(gganimate)
 library(ggspatial);library(sf)
-df <- read_excel("Documents/University/Master/Courses/1. Semester/Business Information Systems/Case 5/prepared_data.xlsx", 
-                            col_types = c("text", "date", "numeric"))
-df = data.frame(df)
-View(df)
+StudentData_FlyUIBK_22_23 <- read_excel("Data/count.xlsx")
+df = data.frame(StudentData_FlyUIBK_22_23)
 
 ggplot(data=df, aes(fill=Airline, y=Count, x=Departure.Date, label = Count)) + 
   geom_bar(position="stack", stat="identity") + 
